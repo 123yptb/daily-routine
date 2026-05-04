@@ -103,14 +103,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Hi, ${profile.name.split(' ')[0]}',
-                style: const TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w800,
-                  color: AppTheme.textPrimary,
-                  letterSpacing: -0.5,
-                ),
+              Row(
+                children: [
+                  Text(
+                    'Hi, ${profile.name.split(' ')[0]}',
+                    style: const TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w800,
+                      color: AppTheme.textPrimary,
+                      letterSpacing: -0.5,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  const Icon(
+                    CupertinoIcons.checkmark_seal_fill,
+                    color: AppTheme.accentCyan,
+                    size: 20,
+                  ),
+                ],
               ),
               Text(
                 'ROUTINE TRACKER BY YBG',

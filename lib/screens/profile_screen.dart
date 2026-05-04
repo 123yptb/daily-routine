@@ -135,16 +135,27 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               const SizedBox(height: 16),
 
               // Name
-              Text(
-                profile.designation.isNotEmpty
-                    ? '${profile.designation} ${profile.name}'
-                    : profile.name,
-                style: GoogleFonts.nunito(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w800,
-                  color: AppTheme.textPrimary,
-                  letterSpacing: -0.5,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    profile.designation.isNotEmpty
+                        ? '${profile.designation} ${profile.name}'
+                        : profile.name,
+                    style: GoogleFonts.nunito(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w800,
+                      color: AppTheme.textPrimary,
+                      letterSpacing: -0.5,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  const Icon(
+                    CupertinoIcons.checkmark_seal_fill,
+                    color: AppTheme.accentCyan,
+                    size: 24,
+                  ),
+                ],
               ),
               const SizedBox(height: 4),
               Text(
