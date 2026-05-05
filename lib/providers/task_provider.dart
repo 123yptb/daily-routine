@@ -77,7 +77,7 @@ class TaskNotifier extends StateNotifier<List<TaskModel>> {
 
   Future<void> completeTask(
     String taskId, {
-    required double rating,
+    double rating = 5.0, // Default to 5.0 if not provided
     double? actualValue,
     String? note,
   }) async {

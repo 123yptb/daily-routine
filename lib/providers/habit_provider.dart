@@ -71,13 +71,21 @@ class HabitNotifier extends StateNotifier<List<HabitModel>> {
 
   void _updateStreak(HabitModel habit) {
     int streak = 0;
-    DateTime check = DateTime.now();
+    // Grace period: If it's before 4 AM, consider "today" as yesterday for streak purposes
+    DateTime now = DateTime.now();
+    DateTime check = now.hour < 4 ? now.subtract(const Duration(days: 1)) : now;
+    
     for (int i = 0; i < 365; i++) {
       final key = _dateKey(check);
       if (habit.isCompletedForDate(key)) {
         streak++;
         check = check.subtract(const Duration(days: 1));
       } else {
+        // If we check "today" and it's not done yet, don't break the streak, just move to yesterday
+        if (i == 0 && _dateKey(now) == key) {
+          check = check.subtract(const Duration(days: 1));
+          continue;
+        }
         break;
       }
     }
