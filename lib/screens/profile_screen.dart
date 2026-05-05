@@ -268,6 +268,35 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 onTap: () {},
               ),
               const SizedBox(height: 16),
+              const SizedBox(height: 32),
+              Text(
+                'SECURITY & PRIVACY',
+                style: GoogleFonts.nunito(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w800,
+                  color: AppTheme.textMuted,
+                  letterSpacing: 1.2,
+                ),
+              ),
+              const SizedBox(height: 16),
+              _buildSettingRow(
+                icon: CupertinoIcons.shield_fill,
+                color: AppTheme.accentGreen,
+                title: 'Device-Only Storage',
+                onTap: () {
+                  _showSecurityInfo(context);
+                },
+              ),
+              const SizedBox(height: 16),
+              _buildSettingRow(
+                icon: CupertinoIcons.wifi_slash,
+                color: AppTheme.accentYellow,
+                title: 'Works 100% Offline',
+                onTap: () {
+                   _showOfflineInfo(context);
+                },
+              ),
+              const SizedBox(height: 16),
               _buildSettingRow(
                 icon: CupertinoIcons.share,
                 color: AppTheme.accentCyan,
@@ -393,6 +422,42 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           ],
         );
       },
+    );
+  }
+
+  void _showSecurityInfo(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) => CupertinoAlertDialog(
+        title: const Text('Privacy First'),
+        content: const Text(
+          'Your data never leaves this device. We do not use cloud servers, meaning your journals and habits are 100% private to you.',
+        ),
+        actions: [
+          CupertinoDialogAction(
+            child: const Text('Got it'),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showOfflineInfo(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) => CupertinoAlertDialog(
+        title: const Text('Offline Ready'),
+        content: const Text(
+          'Routine tracker BY YBG is designed to work anywhere. You don\'t need an internet connection to track your day or write your journal.',
+        ),
+        actions: [
+          CupertinoDialogAction(
+            child: const Text('Perfect'),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ],
+      ),
     );
   }
 }
