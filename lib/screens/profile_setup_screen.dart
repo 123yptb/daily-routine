@@ -31,14 +31,13 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
 
   void _submit() {
     if (_nameCtrl.text.trim().isEmpty ||
-        _selectedDOB == null ||
-        _designationCtrl.text.trim().isEmpty) {
+        _selectedDOB == null) {
       showCupertinoDialog(
         context: context,
         builder: (context) => CupertinoAlertDialog(
           title: const Text('Missing Info'),
           content: const Text(
-              'Please fill in your name, date of birth, and designation. Image is optional.'),
+              'Please fill in your name and date of birth to continue.'),
           actions: [
             CupertinoDialogAction(
               child: const Text('OK'),
